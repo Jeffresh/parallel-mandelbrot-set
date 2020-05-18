@@ -414,9 +414,9 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       else
         cfrontier = 0;
       System.out.println("Cfrontier " + cfrontier);
-      MainCanvas.task = new TumoralGrowth();
-      MainCanvas.task.plug(canvas_template);
-      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
+//      MainCanvas.task = new parallelMandelbrot();
+//      MainCanvas.task.plug(canvas_template);
+//      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
       MainCanvas.setDimensions(cells_number, cells_number);
       if (scaleImage >= 1) {
         MainCanvas.setScaleRate(scaleImage);
@@ -424,7 +424,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
       if (population_chart != null) {
         population_chart.setRef(MainCanvas.task);
-        MainCanvas.task.plugPopulationChart(population_chart);
+//        MainCanvas.task.plugPopulationChart(population_chart);
         population_chart.createSeries();
       }
 
@@ -446,8 +446,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
         @Override
         protected Void doInBackground() {
           try {
-            MainCanvas.task.caComputation(generations);
-            MainCanvas.task.plugPopulationChart(population_chart);
+//            MainCanvas.task.caComputation(generations);
+//            MainCanvas.task.plugPopulationChart(population_chart);
             population_chart.setRef(MainCanvas.task);
             JFrame dialog = new JFrame();
             dialog.setAlwaysOnTop(true);
@@ -463,7 +463,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     if (e.getSource() == gui_buttons.get(buttons_names[2])) {
       worker.cancel(true);
       worker.cancel(false);
-      TumoralGrowth.stop();
+//      parallelMandelbrot.stop();
     }
   }
 
