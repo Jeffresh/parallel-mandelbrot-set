@@ -140,7 +140,7 @@ public class parallelMandelbrot implements Runnable {
 
   }
 
-  public parallelMandelbrot(int z, int mi) {
+  public void initializer(int z, int mi) {
 
     width = 800;
     height = 600;

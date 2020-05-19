@@ -362,7 +362,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     }
 
     if (e.getSource() == gui_buttons.get(buttons_names[0])) {
-
+      MainCanvas.task = new parallelMandelbrot();
+      MainCanvas.task.plug(canvas_template);
       MainCanvas.task.initializer((int) zoom, depth);
       MainCanvas.setDimensions(cells_number, cells_number);
       if (zoom >= 1) {
@@ -388,7 +389,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
         @Override
         protected Void doInBackground() {
           try {
-//            MainCanvas.task.caComputation(generations);
+            MainCanvas.task.next_gen_concurrent(taskNumber);
 //            MainCanvas.task.plugPopulationChart(population_chart);
 //            population_chart.setRef(MainCanvas.task);
             JFrame dialog = new JFrame();
