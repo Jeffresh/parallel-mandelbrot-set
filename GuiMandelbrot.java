@@ -167,7 +167,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static void initializeInputTextFieldsAndLabels() {
     textfields_and_labels.put("Depth","100000");
     textfields_and_labels.put("Task number", "4");
-    textfields_and_labels.put("Scale Image: ", "400");
+    textfields_and_labels.put("Zoom: ", "400");
   }
 
   private static void initializeButtonNames() {
@@ -313,7 +313,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   private static  int depth = 100000;
   private static int taskNumber = 4;
-  private static double scaleImage = 400;
+  private static double zoom = 400;
   private static int cells_number = 800;
 
   public void actionPerformed(ActionEvent e) {
@@ -322,14 +322,14 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       // frame.remove(window);
       value = 2;
       deleteCanvasLabels(input_variables_labels);
-//      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
+      MainCanvas.task.initializer((int) zoom, depth);
       canvas_template.updateCanvas();
     }
 
     if (e.getSource() == nav_bar.getMenu(0).getItem(1)) {
       value = 3;
       deleteCanvasLabels(input_variables_labels);
-//      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
+      MainCanvas.task.initializer((int) zoom, depth);
       canvas_template.updateCanvas();
     }
 
@@ -363,9 +363,10 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
     if (e.getSource() == gui_buttons.get(buttons_names[0])) {
 
+      MainCanvas.task.initializer((int) zoom, depth);
       MainCanvas.setDimensions(cells_number, cells_number);
-      if (scaleImage >= 1) {
-        MainCanvas.setScaleRate(scaleImage);
+      if (zoom >= 1) {
+        MainCanvas.setScaleRate(zoom);
       }
 
 //      if (population_chart != null) {
@@ -377,7 +378,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       System.out.println("Cells number: " + cells_number);
       System.out.println("Depth: " + depth);
       System.out.println("Task number: " + taskNumber);
-      System.out.println("Scale image: " + scaleImage);
+      System.out.println("Scale image: " + zoom);
 
       canvas_template.updateCanvas();
     }
@@ -451,7 +452,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
     if (e.getSource() == input_variables_textfields[2]) {
       nump = input_variables_textfields[2].getText();
-      scaleImage = Double.parseDouble(nump);
+      zoom = Double.parseDouble(nump);
     }
 
   }
