@@ -254,8 +254,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     frame.setMinimumSize(new Dimension(500, 500));
     frame.setJMenuBar(new GuiMandelbrot().createNavBar());
 
-    int xMax = cells_number;
-    int yMax = cells_number;
+    int xMax = width;
+    int yMax = height;
     canvas_template = new MainCanvas(xMax, yMax);
     canvas_template.setOpaque(true);
     canvas_template.setDoubleBuffered(false);
@@ -315,6 +315,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static int taskNumber = 4;
   private static double zoom = 400;
   private static int cells_number = 800;
+  private static int width = 800;
+  private static int height = 600;
 
   public void actionPerformed(ActionEvent e) {
 
@@ -365,7 +367,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       MainCanvas.task = new parallelMandelbrot();
       MainCanvas.task.plug(canvas_template);
       MainCanvas.task.initializer((int) zoom, depth);
-      MainCanvas.setDimensions(cells_number, cells_number);
+      MainCanvas.setDimensions(width, height);
       if (zoom >= 1) {
         MainCanvas.setScaleRate(zoom);
       }
