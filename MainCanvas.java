@@ -21,6 +21,7 @@ class MainCanvas extends JPanel {
     public static int xMax;
     public static int yMax;
 
+
     public void updateCanvas(){
         this.validate();
         this.repaint();
@@ -70,34 +71,35 @@ class MainCanvas extends JPanel {
      */
 
     private  BufferedImage GenerateImage() {
-        Color color;
-
-        int[][] matrix = task.getData();
-
-        for(int x = 0; x < yMax; x++)
-        {
-            for(int y = 0; y < xMax; y++)
-            {
-
-                if(matrix[x][y]  == 1)
-                    color = Color.GREEN;
-                else if(matrix[x][y] == 0)
-                    color = Color.BLACK;
-                else if(matrix[x][y] == 2)
-                    color = Color.BLUE;
-                else if(matrix[x][y] == 3)
-                    color = Color.YELLOW;
-                else if(matrix[x][y] == 4)
-                    color = Color.PINK;
-                else
-                    color = Color.RED;
-
-                image_ref.setRGB(x, y, color.getRGB());
-            }
-        }
-
-        if(scale_rate>=1)
-            return scaleImage(scale_rate);
+////        Color color;
+//
+//        int[][] matrix = task.getData();
+//
+//        for(int x = 0; x < yMax; x++)
+//        {
+//            for(int y = 0; y < xMax; y++)
+//            {
+//
+//                if(matrix[x][y]  == 1)
+//                    color = Color.GREEN;
+//                else if(matrix[x][y] == 0)
+//                    color = Color.BLACK;
+//                else if(matrix[x][y] == 2)
+//                    color = Color.BLUE;
+//                else if(matrix[x][y] == 3)
+//                    color = Color.YELLOW;
+//                else if(matrix[x][y] == 4)
+//                    color = Color.PINK;
+//                else
+//                    color = Color.RED;
+//
+//                image_ref.setRGB(x, y, color.getRGB());
+//            }
+//        }
+//
+//        if(scale_rate>=1)
+//            return scaleImage(scale_rate);
+        image_ref = task.getData();
 
         return image_ref;
     }
