@@ -24,8 +24,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static Map<String, JButton> gui_buttons = new LinkedHashMap<String, JButton>();
   public static Map<String, String> textfields_and_labels = new LinkedHashMap<>();
   private static JComboBox<String> generator_list_combo_box;
-  private static String[] engine_generator_names = { "Custom", "A", "B", "C", "D" };
-  private static String initializer_mode = "Random";
+
 
   private JMenuBar createTopBar(Color color, Dimension dimension) {
 
@@ -179,7 +178,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
     Object[] labels_and_textfields_list = createTextFieldsAndLabels(textfields_and_labels);
 
-    generator_list_combo_box = new JComboBox<>(engine_generator_names);
+    generator_list_combo_box = new JComboBox<>();
     generator_list_combo_box.addFocusListener(this);
 
     JComboBox[] combo_box_list = { generator_list_combo_box };
