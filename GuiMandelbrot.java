@@ -364,14 +364,6 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
     if (e.getSource() == gui_buttons.get(buttons_names[0])) {
 
-      if (cilindric_frontier_buttons.get("Yes").isSelected())
-        cfrontier = 1;
-      else
-        cfrontier = 0;
-      System.out.println("Cfrontier " + cfrontier);
-//      MainCanvas.task = new parallelMandelbrot();
-//      MainCanvas.task.plug(canvas_template);
-//      MainCanvas.task.initializer(cells_number, generations, cfrontier, initializer_mode, ps, pp, pm, np);
       MainCanvas.setDimensions(cells_number, cells_number);
       if (scaleImage >= 1) {
         MainCanvas.setScaleRate(scaleImage);
