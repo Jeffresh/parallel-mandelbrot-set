@@ -376,14 +376,9 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 //      }
 
       System.out.println("Cells number: " + cells_number);
-      System.out.println("Generations: " + generations);
-      System.out.println("Ps: " + ps);
-      System.out.println("Pp: " + pp);
-      System.out.println("Pm: " + pm);
-      System.out.println("Np: " + np);
-
-      System.out.println("Initializer mode: " + initializer_mode);
-      System.out.println("Scale image" + scaleImage);
+      System.out.println("Depth: " + depth);
+      System.out.println("Task number: " + taskNumber);
+      System.out.println("Scale image: " + scaleImage);
 
       canvas_template.updateCanvas();
     }
