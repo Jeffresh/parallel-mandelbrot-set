@@ -40,32 +40,32 @@ public class AnalyticsMultiChart {
         CA1Dref = ref;
     }
 
-    public void getDataPopulation() {
+//    public void getDataPopulation() {
+//
+//        fifo_population = CA1Dref.getPopulation();
+//        double[][] array = new double[CA1Dref.states_number][fifo_population[0].size()];
+//
+//        for (int j = 0; j < CA1Dref.states_number; j++) {
+//            for (int i = 0; i < fifo_population[j].size(); i++)
+//                array[j][i] = fifo_population[j].get(i)+0.0;
+//            population_chart.updateXYSeries("state "+(j),null, array[j], null);
+//        }
+//    }
+//
+//    public void createSeries() {
+//        int[] initialValues = CA1Dref.getInitialPopulation();
+//       if(population_chart.getSeriesMap().size()<1)
+//            for (int i = 0; i < CA1Dref.states_number ; i++) {
+//                population_chart.addSeries("state "+(i),new double[]{0}, new double[]{initialValues[i]})
+//                        .setXYSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line).setMarker(SeriesMarkers.NONE);
+//            }
+//    }
 
-        fifo_population = CA1Dref.getPopulation();
-        double[][] array = new double[CA1Dref.states_number][fifo_population[0].size()];
-
-        for (int j = 0; j < CA1Dref.states_number; j++) {
-            for (int i = 0; i < fifo_population[j].size(); i++)
-                array[j][i] = fifo_population[j].get(i)+0.0;
-            population_chart.updateXYSeries("state "+(j),null, array[j], null);
-        }
-    }
-
-    public void createSeries() {
-        int[] initialValues = CA1Dref.getInitialPopulation();
-       if(population_chart.getSeriesMap().size()<1)
-            for (int i = 0; i < CA1Dref.states_number ; i++) {
-                population_chart.addSeries("state "+(i),new double[]{0}, new double[]{initialValues[i]})
-                        .setXYSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line).setMarker(SeriesMarkers.NONE);
-            }
-    }
-
-    public void plot() {
-        getDataPopulation();
-        population_chart_panel.revalidate();
-        population_chart_panel.repaint();
-    }
+//    public void plot() {
+//        getDataPopulation();
+//        population_chart_panel.revalidate();
+//        population_chart_panel.repaint();
+//    }
 
     public void show() {
         population_chart_panel = new XChartPanel(population_chart);

@@ -292,7 +292,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   private static JLabel label_string_var_value;
   private static int value = 0;
-  private static AnalyticsMultiChart population_chart;
+//  private static AnalyticsMultiChart population_chart;
 
   public void showURI(String uri) {
     if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
@@ -348,9 +348,9 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
         @Override
         protected Void doInBackground() {
           try {
-            population_chart = new AnalyticsMultiChart("Population Chart", "Generations", "Cells Number");
-            population_chart.setRef(MainCanvas.task);
-            population_chart.show();
+//            population_chart = new AnalyticsMultiChart("Population Chart", "Generations", "Cells Number");
+//            population_chart.setRef(MainCanvas.task);
+//            population_chart.show();
 
           } catch (Exception ex) {
             System.out.println("Worker exception");
@@ -386,11 +386,11 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
         MainCanvas.setScaleRate(scaleImage);
       }
 
-      if (population_chart != null) {
-        population_chart.setRef(MainCanvas.task);
-//        MainCanvas.task.plugPopulationChart(population_chart);
-        population_chart.createSeries();
-      }
+//      if (population_chart != null) {
+//        population_chart.setRef(MainCanvas.task);
+////        MainCanvas.task.plugPopulationChart(population_chart);
+//        population_chart.createSeries();
+//      }
 
       System.out.println("Cells number: " + cells_number);
       System.out.println("Generations: " + generations);
@@ -412,7 +412,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
           try {
 //            MainCanvas.task.caComputation(generations);
 //            MainCanvas.task.plugPopulationChart(population_chart);
-            population_chart.setRef(MainCanvas.task);
+//            population_chart.setRef(MainCanvas.task);
             JFrame dialog = new JFrame();
             dialog.setAlwaysOnTop(true);
           } catch (Exception ex) {
