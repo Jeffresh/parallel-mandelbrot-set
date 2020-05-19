@@ -131,6 +131,12 @@ public class parallelMandelbrot implements Runnable {
     System.out.println(in + " " + fn);
   }
 
+  public parallelMandelbrot() {
+      width = 800;
+      height = 600;
+      
+  }
+
   public parallelMandelbrot(int z, int mi) {
 
     width = 800;
