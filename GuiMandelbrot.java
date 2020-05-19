@@ -311,20 +311,11 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       canvas_template.remove(label_string_var_value);
   }
 
-  private static int cfrontier = 0;
-  private static int cells_number = 600;
-  private static int generations = 600;
-  private static double ps = 1; // Probability of cell survival.
-  private static double pp = 0.25; // Probability of cell proliferation.
-  private static double pm = 0.2; // Probability of cell migration.
-  private static double np = 1; // Total PH needed to proliferate.
-  private static double scaleImage = 1;
-  private static double pd = 0; // Probability of cell death.
-  private static double pq = 1; // Probability of cell quiescence.
-  private static double rr = 1; // Random value to determine survival.
-  private static double rrm = 1; // Random value to determine migration.
-  private static double rrp = 1; // Random value to determine proliferation.
-  private static double ph = 1;
+
+  private static  int depth = 100000;
+  private static int taskNumber = 4;
+  private static double scaleImage = 400;
+  private static int cells_number = 800;
 
   public void actionPerformed(ActionEvent e) {
 
