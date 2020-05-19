@@ -167,8 +167,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   private static void initializeInputTextFieldsAndLabels() {
     textfields_and_labels.put("Depth","100000");
-    textfields_and_labels.put("Task number", "2");
-    textfields_and_labels.put("Scale Image: ", "1");
+    textfields_and_labels.put("Task number", "4");
+    textfields_and_labels.put("Scale Image: ", "400");
   }
 
   private static void initializeButtonNames() {
