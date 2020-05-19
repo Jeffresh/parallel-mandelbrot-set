@@ -5,7 +5,6 @@ import java.util.*;
 import java.util.concurrent.*;
 import javax.swing.JPanel;
 
-import com.sun.tools.javac.Main;
 
 public class parallelMandelbrot implements Runnable {
 
