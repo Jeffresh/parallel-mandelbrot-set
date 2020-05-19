@@ -166,13 +166,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   // Frontier")};
 
   private static void initializeInputTextFieldsAndLabels() {
-    textfields_and_labels.put("Dimension (NxN): ", "200"); // 2
-    textfields_and_labels.put("Generations: ", "600"); // 3
-    textfields_and_labels.put("Ps: ", "1"); // 3
-    textfields_and_labels.put("Pp: ", "0.25"); // 3
-    textfields_and_labels.put("Pm: ", "0.2"); // 3
-    textfields_and_labels.put("Np", "1");
-    combobox_labels[0].setLabelFor(generator_list_combo_box);
+    textfields_and_labels.put("Depth","100000");
+    textfields_and_labels.put("Task number", "2");
     textfields_and_labels.put("Scale Image: ", "1");
   }
 
@@ -246,37 +241,6 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       container.add(textFields[i], c);
     }
 
-    for (int i = 0; i < num_labels_combobox; i++) {
-      GuiMandelbrot.combobox_labels[i].setFont(new Font(null, Font.PLAIN, 20));
-      combo_box_list[i].setFont(new Font(null, Font.PLAIN, 20));
-      ((JLabel) combo_box_list[i].getRenderer()).setHorizontalAlignment(JLabel.CENTER);
-      c.gridwidth = GridBagConstraints.RELATIVE; // next-to-last
-      c.fill = GridBagConstraints.NONE; // reset to default
-      c.weightx = 1.0; // reset to default
-      container.add(GuiMandelbrot.combobox_labels[i], c);
-
-      c.gridwidth = GridBagConstraints.REMAINDER; // end row
-      c.fill = GridBagConstraints.NONE;
-      c.weightx = 1.0;
-      container.add(combo_box_list[i], c);
-    }
-
-    // GuiGoL.radio_button_labels[0].setFont(new Font(null, Font.PLAIN,20));
-    // c.gridwidth = GridBagConstraints.RELATIVE; //next-to-last
-    // c.fill = GridBagConstraints.NONE; //reset to default
-    // c.weightx = 1.0; //reset to default
-    // container.add(GuiGoL.radio_button_labels[0], c);
-    // c.gridwidth = GridBagConstraints.BASELINE_TRAILING;
-    // c.fill = GridBagConstraints.REMAINDER;
-    // c.weightx = 0;
-    //
-    // Box horizontal = Box.createHorizontalBox();
-    //
-    //
-    // for(Map.Entry<String,JRadioButton> button: radiobutton.entrySet()){
-    // horizontal.add(button.getValue());
-    // }
-    // container.add(horizontal,c);
 
   }
 
