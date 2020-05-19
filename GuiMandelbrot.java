@@ -420,117 +420,46 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   public void focusLost(FocusEvent e) {
     String nump;
+
     try {
       double nump_value;
       if (e.getSource() == input_variables_textfields[0]) {
         nump = input_variables_textfields[0].getText();
-        nump_value = Double.parseDouble(nump);
-        if (nump.equals("") || (nump_value < 0 || nump_value > 1000)) {
-          numeric_var = 0;
-          cells_number = 200;
+        nump_value = Integer.parseInt(nump);
+        if (nump.equals("") || (nump_value < 1)) {
+          depth = 100000;
           throw new Exception("Invalid Number");
         } else {
-          cells_number = Integer.parseInt(nump);
+          depth = Integer.parseInt(nump);
         }
       }
     } catch (Exception ex) {
-      String message = "\"Invalid Number\"\n" + "Enter a number between 200 and 1000\n" + " setted 200 by default";
+      String message = "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 100000 by default";
       JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
     }
 
     try {
-      double nump_value;
-      if (e.getSource() == input_variables_textfields[1]) {
-        nump = input_variables_textfields[1].getText();
-        nump_value = Double.parseDouble(nump);
-        if (nump.equals("") || (nump_value < 1)) {
-          numeric_var = 600;
-          generations = 600;
-          throw new Exception("Invalid Number");
-        } else {
-          generations = Integer.parseInt(nump);
-        }
+    double nump_value;
+    if (e.getSource() == input_variables_textfields[1]) {
+      nump = input_variables_textfields[1].getText();
+      nump_value = Double.parseDouble(nump);
+      if (nump.equals("") || (nump_value < 1)) {
+        taskNumber = 4;
+        throw new Exception("Invalid Number");
+      } else {
+        taskNumber = Integer.parseInt(nump);
       }
-    } catch (Exception ex) {
-      String message = "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 600 by default";
-      JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
     }
+  } catch (Exception ex) {
+    String message = "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 4 by default";
+    JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+  }
 
     if (e.getSource() == input_variables_textfields[2]) {
       nump = input_variables_textfields[2].getText();
-      ps = Double.parseDouble(nump);
-      generator_list_combo_box.setSelectedItem("Custom");
-    }
-
-    if (e.getSource() == input_variables_textfields[3]) {
-      nump = input_variables_textfields[3].getText();
-      pp = Double.parseDouble(nump);
-      generator_list_combo_box.setSelectedItem("Custom");
-    }
-
-    if (e.getSource() == input_variables_textfields[4]) {
-      nump = input_variables_textfields[4].getText();
-      pm = Double.parseDouble(nump);
-      generator_list_combo_box.setSelectedItem("Custom");
-    }
-
-    if (e.getSource() == input_variables_textfields[5]) {
-      nump = input_variables_textfields[5].getText();
-      np = Double.parseDouble(nump);
-      generator_list_combo_box.setSelectedItem("Custom");
-    }
-
-    if (e.getSource() == input_variables_textfields[6]) {
-      nump = input_variables_textfields[6].getText();
       scaleImage = Double.parseDouble(nump);
-      generator_list_combo_box.setSelectedItem("Custom");
     }
 
-    if (e.getSource() == generator_list_combo_box) {
-      JComboBox<String> cb = (JComboBox<String>) e.getSource();
-      String op = (String) cb.getSelectedItem();
-      assert op != null;
-      initializer_mode = op;
-      ps = 1;
-      input_variables_textfields[2].setText(Double.toString(ps));
-
-      pp = 0.25;
-      input_variables_textfields[3].setText(Double.toString(pp));
-
-      switch (initializer_mode) {
-        case ("A"): {
-          pm = 0.2;
-          np = 1;
-          input_variables_textfields[4].setText(Double.toString(pm));
-          input_variables_textfields[5].setText(Double.toString(np));
-        }
-          break;
-        case ("B"): {
-          pm = 0.8;
-          np = 1;
-          input_variables_textfields[4].setText(Double.toString(pm));
-          input_variables_textfields[5].setText(Double.toString(np));
-        }
-          break;
-        case ("C"): {
-          pm = 0.2;
-          np = 2;
-          input_variables_textfields[4].setText(Double.toString(pm));
-          input_variables_textfields[5].setText(Double.toString(np));
-        }
-          break;
-        case ("D"): {
-          pm = 0.8;
-          np = 2;
-          input_variables_textfields[4].setText(Double.toString(pm));
-          input_variables_textfields[5].setText(Double.toString(np));
-        }
-          break;
-        default:
-          System.out.println(op);
-          break;
-      }
-    }
   }
 
   public static void main(String[] args) {
