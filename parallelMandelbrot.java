@@ -33,6 +33,10 @@ public class parallelMandelbrot implements Runnable {
   private static int[] alives;
   //  public static XYSeries[] series;
 
+  public BufferedImage getData() {
+        return Imagen;
+  }
+
   public void plug(MainCanvas ref) {
     canvasRef = ref;
   }
@@ -134,7 +138,7 @@ public class parallelMandelbrot implements Runnable {
   public parallelMandelbrot() {
       width = 800;
       height = 600;
-      
+
   }
 
   public parallelMandelbrot(int z, int mi) {
