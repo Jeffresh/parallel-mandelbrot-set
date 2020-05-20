@@ -24,6 +24,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static Map<String, JButton> gui_buttons = new LinkedHashMap<String, JButton>();
   public static Map<String, String> textfields_and_labels = new LinkedHashMap<>();
   private static JComboBox<String> generator_list_combo_box;
+  public static AnalyticsMultiChart timeSpeedUpChart;
+
 
   private JMenuBar createTopBar(Color color, Dimension dimension) {
 
@@ -353,8 +355,9 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
             @Override
             protected Void doInBackground() {
               try {
-                //            population_chart = new AnalyticsMultiChart("Population Chart",
-                // "Generations", "Cells Number");
+                            timeSpeedUpChart = new AnalyticsMultiChart("Computation time / Time SpeedUp",
+                 "task number", "Computation time");
+                            timeSpeedUpChart.show();
                 //            population_chart.setRef(MainCanvas.task);
                 //            population_chart.show();
 
