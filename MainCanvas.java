@@ -17,7 +17,6 @@ class MainCanvas extends JPanel {
     /** Object of the class that Needs Visualization (ONV)  */
     public static parallelMandelbrot task;
     public static BufferedImage image_ref;
-    public static double scale_rate =1;
     public static int xMax;
     public static int yMax;
 
@@ -26,23 +25,6 @@ class MainCanvas extends JPanel {
         this.validate();
         this.repaint();
     }
-    public static void setScaleRate(double scaleRate){
-        scale_rate = scaleRate;
-    }
-
-    public BufferedImage scaleImage(double scale_rate){
-        BufferedImage mask = new BufferedImage(xMax, yMax, BufferedImage.TYPE_INT_ARGB);
-        AffineTransform at = new AffineTransform();
-        at.scale(scale_rate, scale_rate);
-        AffineTransformOp scaleOp =
-                new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
-        image_ref = scaleOp.filter(image_ref, mask);
-
-        return image_ref;
-
-    }
-
-
 
     /** Constructor of the class that works as a link between the classNV and the GUI */
     public MainCanvas(int x_max, int y_max) {
@@ -71,36 +53,7 @@ class MainCanvas extends JPanel {
      */
 
     private  BufferedImage GenerateImage() {
-////        Color color;
-//
-//        int[][] matrix = task.getData();
-//
-//        for(int x = 0; x < yMax; x++)
-//        {
-//            for(int y = 0; y < xMax; y++)
-//            {
-//
-//                if(matrix[x][y]  == 1)
-//                    color = Color.GREEN;
-//                else if(matrix[x][y] == 0)
-//                    color = Color.BLACK;
-//                else if(matrix[x][y] == 2)
-//                    color = Color.BLUE;
-//                else if(matrix[x][y] == 3)
-//                    color = Color.YELLOW;
-//                else if(matrix[x][y] == 4)
-//                    color = Color.PINK;
-//                else
-//                    color = Color.RED;
-//
-//                image_ref.setRGB(x, y, color.getRGB());
-//            }
-//        }
-//
-//        if(scale_rate>=1)
-//            return scaleImage(scale_rate);
         image_ref = task.getData();
-
         return image_ref;
     }
 
