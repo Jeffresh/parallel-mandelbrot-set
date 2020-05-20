@@ -9,8 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * GuiTemplate.java Purpose: this program implements a Gui template that you can
- * modify and adapt easily for any application that need data visualization.
+ * GuiTemplate.java Purpose: this program implements a Gui template that you can modify and adapt
+ * easily for any application that need data visualization.
  *
  * @author: Jeffrey Pallarés Núñez.
  * @version: 1.0 23/07/19
@@ -24,7 +24,6 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static Map<String, JButton> gui_buttons = new LinkedHashMap<String, JButton>();
   public static Map<String, String> textfields_and_labels = new LinkedHashMap<>();
   private static JComboBox<String> generator_list_combo_box;
-
 
   private JMenuBar createTopBar(Color color, Dimension dimension) {
 
@@ -72,10 +71,10 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     Dimension navbar_dimension = new Dimension(200, 40);
     Map<String, String[]> menu_items = new HashMap<>();
 
-    menu_items.put("File", new String[] { "Item menu 1", "Item menu 2" });
-    menu_items.put("Plot", new String[] { "Population chart" });
-    menu_items.put("Help", new String[] { "Help message" });
-    menu_items.put("About", new String[] { "About message" });
+    menu_items.put("File", new String[] {"Item menu 1", "Item menu 2"});
+    menu_items.put("Plot", new String[] {"Population chart"});
+    menu_items.put("Help", new String[] {"Help message"});
+    menu_items.put("About", new String[] {"About message"});
 
     nav_bar = createTopBar(navbar_color, navbar_dimension);
 
@@ -90,11 +89,12 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     return nav_bar;
   }
 
-  String[] round_buttons_options = { "No", "Yes" };
+  String[] round_buttons_options = {"No", "Yes"};
   ButtonGroup cilindric_frontier = new ButtonGroup();
   Map<String, JRadioButton> cilindric_frontier_buttons = new HashMap<>();
 
-  private Map<String, JRadioButton> createRadioButton(String[] round_buttons_options, ButtonGroup group) {
+  private Map<String, JRadioButton> createRadioButton(
+      String[] round_buttons_options, ButtonGroup group) {
     Map<String, JRadioButton> radio_button = new HashMap<>();
     for (String button_name : round_buttons_options) {
       JRadioButton button = new JRadioButton(button_name);
@@ -135,8 +135,10 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     buttons_pane.setMinimumSize(new Dimension(100, 5));
     buttons_pane.setOpaque(true);
 
-    buttons_pane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Control"),
-        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+    buttons_pane.setBorder(
+        BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder("Control"),
+            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
     return buttons_pane;
   }
@@ -155,23 +157,23 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       index++;
     }
 
-    return new Object[] { labels, textFields };
+    return new Object[] {labels, textFields};
   }
 
   private static JTextField[] input_variables_textfields;
   private static JLabel[] input_variables_labels;
-  private static JLabel[] combobox_labels = { new JLabel("Initializer mode") };
+  private static JLabel[] combobox_labels = {new JLabel("Initializer mode")};
   // private static JLabel [] radio_button_labels = { new JLabel("Cilindric
   // Frontier")};
 
   private static void initializeInputTextFieldsAndLabels() {
-    textfields_and_labels.put("Depth","100000");
+    textfields_and_labels.put("Depth", "100000");
     textfields_and_labels.put("Task number", "4");
     textfields_and_labels.put("Zoom: ", "200");
   }
 
   private static void initializeButtonNames() {
-    buttons_names = new String[] { "Initialize", "Start", "Stop" };
+    buttons_names = new String[] {"Initialize", "Start", "Stop"};
   }
 
   private JSplitPane createGuiPanels() {
@@ -181,7 +183,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     generator_list_combo_box = new JComboBox<>();
     generator_list_combo_box.addFocusListener(this);
 
-    JComboBox[] combo_box_list = { generator_list_combo_box };
+    JComboBox[] combo_box_list = {generator_list_combo_box};
 
     JPanel input_variables_pane = new JPanel();
     GridBagLayout gridbag = new GridBagLayout();
@@ -195,15 +197,24 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
     cilindric_frontier_buttons = createRadioButton(round_buttons_options, cilindric_frontier);
 
-    addLabelTextRows(input_variables_labels, input_variables_textfields, combobox_labels, combo_box_list, null,
-        cilindric_frontier_buttons, input_variables_pane);
+    addLabelTextRows(
+        input_variables_labels,
+        input_variables_textfields,
+        combobox_labels,
+        combo_box_list,
+        null,
+        cilindric_frontier_buttons,
+        input_variables_pane);
 
-    input_variables_pane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Variables"),
-        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+    input_variables_pane.setBorder(
+        BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder("Variables"),
+            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
     input_variables_pane.setOpaque(true);
     JPanel buttons_pane = createButtonsPane();
 
-    JSplitPane control_center_pane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, input_variables_pane, buttons_pane);
+    JSplitPane control_center_pane =
+        new JSplitPane(JSplitPane.VERTICAL_SPLIT, input_variables_pane, buttons_pane);
     control_center_pane.setMaximumSize(new Dimension(800, 800));
     control_center_pane.setMinimumSize(new Dimension(800, 800));
     input_variables_pane.setMaximumSize(new Dimension(800, 800));
@@ -215,8 +226,13 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     return control_center_pane;
   }
 
-  private void addLabelTextRows(JLabel[] labels, JTextField[] textFields, JLabel[] combobox_labels,
-      JComboBox<String>[] combo_box_list, JLabel[] radio_labels, Map<String, JRadioButton> radiobutton,
+  private void addLabelTextRows(
+      JLabel[] labels,
+      JTextField[] textFields,
+      JLabel[] combobox_labels,
+      JComboBox<String>[] combo_box_list,
+      JLabel[] radio_labels,
+      Map<String, JRadioButton> radiobutton,
       Container container) {
 
     GridBagConstraints c = new GridBagConstraints();
@@ -239,8 +255,6 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       textFields[i].setColumns(3);
       container.add(textFields[i], c);
     }
-
-
   }
 
   private static void createAndShowGUI() {
@@ -279,7 +293,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static String string_var = "Hello World";
   private static JLabel label_numeric_var_value;
 
-  private static void chooseInputVariables(int n_string_variables, int n_numeric_variables, int n_label_variables) {
+  private static void chooseInputVariables(
+      int n_string_variables, int n_numeric_variables, int n_label_variables) {
     input_numeric_variables = new Double[n_numeric_variables];
     input_string_variables = new String[n_string_variables];
     input_label_variables = new JLabel[n_label_variables];
@@ -291,7 +306,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   private static JLabel label_string_var_value;
   private static int value = 0;
-//  private static AnalyticsMultiChart population_chart;
+  //  private static AnalyticsMultiChart population_chart;
 
   public void showURI(String uri) {
     if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
@@ -304,14 +319,11 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   }
 
   public void deleteCanvasLabels(JLabel[] labels) {
-    if (label_numeric_var_value != null)
-      canvas_template.remove(label_numeric_var_value);
-    if (label_string_var_value != null)
-      canvas_template.remove(label_string_var_value);
+    if (label_numeric_var_value != null) canvas_template.remove(label_numeric_var_value);
+    if (label_string_var_value != null) canvas_template.remove(label_string_var_value);
   }
 
-
-  private static  int depth = 100000;
+  private static int depth = 100000;
   private static int taskNumber = 4;
   private static double zoom = 200;
   private static int cells_number = 800;
@@ -336,20 +348,22 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     }
 
     if (e.getSource() == nav_bar.getMenu(1).getItem(0)) {
-      worker = new SwingWorker<Void, GuiMandelbrot>() {
-        @Override
-        protected Void doInBackground() {
-          try {
-//            population_chart = new AnalyticsMultiChart("Population Chart", "Generations", "Cells Number");
-//            population_chart.setRef(MainCanvas.task);
-//            population_chart.show();
+      worker =
+          new SwingWorker<Void, GuiMandelbrot>() {
+            @Override
+            protected Void doInBackground() {
+              try {
+                //            population_chart = new AnalyticsMultiChart("Population Chart",
+                // "Generations", "Cells Number");
+                //            population_chart.setRef(MainCanvas.task);
+                //            population_chart.show();
 
-          } catch (Exception ex) {
-            System.out.println("Worker exception");
-          }
-          return null;
-        }
-      };
+              } catch (Exception ex) {
+                System.out.println("Worker exception");
+              }
+              return null;
+            }
+          };
       worker.execute();
     }
 
@@ -368,15 +382,12 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       MainCanvas.task.plug(canvas_template);
       MainCanvas.task.initializer((int) zoom, depth);
       MainCanvas.setDimensions(width, height);
-      if (zoom >= 1) {
-        MainCanvas.setScaleRate(zoom);
-      }
 
-//      if (population_chart != null) {
-//        population_chart.setRef(MainCanvas.task);
-////        MainCanvas.task.plugPopulationChart(population_chart);
-//        population_chart.createSeries();
-//      }
+      //      if (population_chart != null) {
+      //        population_chart.setRef(MainCanvas.task);
+      ////        MainCanvas.task.plugPopulationChart(population_chart);
+      //        population_chart.createSeries();
+      //      }
 
       System.out.println("Cells number: " + cells_number);
       System.out.println("Depth: " + depth);
@@ -387,21 +398,22 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     }
 
     if (e.getSource() == gui_buttons.get(buttons_names[1])) {
-      worker = new SwingWorker<Void, GuiMandelbrot>() {
-        @Override
-        protected Void doInBackground() {
-          try {
-            MainCanvas.task.next_gen_concurrent(taskNumber);
-//            MainCanvas.task.plugPopulationChart(population_chart);
-//            population_chart.setRef(MainCanvas.task);
-            JFrame dialog = new JFrame();
-            dialog.setAlwaysOnTop(true);
-          } catch (Exception ex) {
-            System.out.println("Worker exception");
-          }
-          return null;
-        }
-      };
+      worker =
+          new SwingWorker<Void, GuiMandelbrot>() {
+            @Override
+            protected Void doInBackground() {
+              try {
+                MainCanvas.task.nextGenConcurrent(taskNumber);
+                //            MainCanvas.task.plugPopulationChart(population_chart);
+                //            population_chart.setRef(MainCanvas.task);
+                JFrame dialog = new JFrame();
+                dialog.setAlwaysOnTop(true);
+              } catch (Exception ex) {
+                System.out.println("Worker exception");
+              }
+              return null;
+            }
+          };
       worker.execute();
     }
 
@@ -432,32 +444,33 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
         }
       }
     } catch (Exception ex) {
-      String message = "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 100000 by default";
+      String message =
+          "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 100000 by default";
       JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
     }
 
     try {
-    double nump_value;
-    if (e.getSource() == input_variables_textfields[1]) {
-      nump = input_variables_textfields[1].getText();
-      nump_value = Double.parseDouble(nump);
-      if (nump.equals("") || (nump_value < 1)) {
-        taskNumber = 4;
-        throw new Exception("Invalid Number");
-      } else {
-        taskNumber = Integer.parseInt(nump);
+      double nump_value;
+      if (e.getSource() == input_variables_textfields[1]) {
+        nump = input_variables_textfields[1].getText();
+        nump_value = Double.parseDouble(nump);
+        if (nump.equals("") || (nump_value < 1)) {
+          taskNumber = 4;
+          throw new Exception("Invalid Number");
+        } else {
+          taskNumber = Integer.parseInt(nump);
+        }
       }
+    } catch (Exception ex) {
+      String message =
+          "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 4 by default";
+      JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
     }
-  } catch (Exception ex) {
-    String message = "\"Invalid Number\"\n" + "Enter a number greater than 0\n" + " setted 4 by default";
-    JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
-  }
 
     if (e.getSource() == input_variables_textfields[2]) {
       nump = input_variables_textfields[2].getText();
       zoom = Double.parseDouble(nump);
     }
-
   }
 
   public static void main(String[] args) {
