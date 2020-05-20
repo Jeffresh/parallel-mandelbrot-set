@@ -408,7 +408,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     if (e.getSource() == gui_buttons.get(buttons_names[2])) {
       worker.cancel(true);
       worker.cancel(false);
-//      parallelMandelbrot.stop();
+      MainCanvas.task.stop();
     }
   }
 
