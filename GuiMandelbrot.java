@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -25,7 +26,17 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   public static Map<String, String> textfields_and_labels = new LinkedHashMap<>();
   private static JComboBox<String> generator_list_combo_box;
   public static AnalyticsMultiChart timeSpeedUpChart;
+  public static LinkedList<Double> computationData;
+  public static LinkedList<Double> speedUpData;
 
+
+  public  LinkedList<Double> getComputationTimeData() {
+    return computationData;
+  }
+
+  public  LinkedList<Double> getSpeedUpData() {
+    return speedUpData;
+  }
 
   private JMenuBar createTopBar(Color color, Dimension dimension) {
 
