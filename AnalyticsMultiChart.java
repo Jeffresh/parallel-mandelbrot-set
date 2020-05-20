@@ -16,7 +16,7 @@ public class AnalyticsMultiChart {
     public  XYChart speedUpChart;
     public  XYChart computationTimeChart;
     public  JFrame chartFrame;
-//    public  CellularAutomata1D CA1Dref;
+    public  GuiMandelbrot Guiref;
     private  String chartTitle;
     private  LinkedList<Double>[] speedUpData;
     private  LinkedList<Double>[] computationTimeData;
@@ -40,21 +40,10 @@ public class AnalyticsMultiChart {
 
     }
 
-//    public void setRef(CellularAutomata1D ref){
-//        CA1Dref = ref;
-//    }
-
-    public void getData () {
-
-//        fifo_population = CA1Dref.getPopulation();
-//        double[][] array = new double[CA1Dref.states_number][fifo_population[0].size()];
-//
-//        for (int j = 0; j < CA1Dref.states_number; j++) {
-//            for (int i = 0; i < fifo_population[j].size(); i++)
-//                array[j][i] = fifo_population[j].get(i)+0.0;
-//            population_chart.updateXYSeries("state "+(j),null, array[j], null);
-//        }
+    public void setRef(GuiMandelbrot ref){
+        Guiref = ref;
     }
+
 
     public void create_series(){
         speedUpChart.addSeries("Computation time",new double[] { 0 }, new double[] { 0 })
@@ -67,9 +56,9 @@ public class AnalyticsMultiChart {
 
 
 
-    public void gerComputationTime(){
+    public void getComputationTime(){
         computationTimeData = new LinkedList[1];
-//        fifo_hamming[0] = CA1Dref.getHammingDistance();
+        computationTimeData[0] = Guiref.getComputationTimeData();
         double[]array = new double[computationTimeData[0].size()];
         for (int i = 0; i < computationTimeData[0].size(); i++){
             array[i] = computationTimeData[0].get(i)+0.0;
@@ -79,7 +68,7 @@ public class AnalyticsMultiChart {
 
     public void getSpeedUp(){
         speedUpData = new LinkedList[1];
-//        fifo_entropy[0] = CA1Dref.getEntropy();
+        speedUpData[0] = Guiref.getSpeedUp();
         double[]array = new double[speedUpData[0].size()];
         for (int i = 0; i < speedUpData[0].size(); i++){
             array[i] = speedUpData[0].get(i)+0.0;
@@ -90,9 +79,8 @@ public class AnalyticsMultiChart {
 
 
     public void plot(){
-//        getData();
-//        getDataHamming();
-//        getDataSpatialEntropy();
+        getComputationTime();
+        getSpeedUp();
 
         speedUpPanel.revalidate();
         speedUpPanel.repaint();
