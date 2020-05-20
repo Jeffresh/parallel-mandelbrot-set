@@ -18,7 +18,7 @@ public class parallelMandelbrot implements Runnable {
   private int iter;
   private int realnucleos;
 
-  private static boolean parar = false;
+  private static boolean abort = false;
   private static MainCanvas canvasRef;
   public static AnalyticsMultiChart population_chart_ref;
 
@@ -60,29 +60,28 @@ public class parallelMandelbrot implements Runnable {
   }
 
   public void stop() {
-    miPool.shutdownNow();
-    parar = true;
+    abort = true;
   }
 
   public void start() {
-    parar = false;
+    abort = false;
   }
 
   public void run() {
 
     // aqui comienza la rutina a paralelizar
     for (int y = in; y < fn; y++) {
-      if (parar) break;
+      if (abort) break;
 
       for (int x = 0; x < width; x++) {
-        if (parar) break;
+        if (abort) break;
 
         zx = zy = 0;
         cX = (x - 400) / ZOOM;
         cY = (y - 300) / ZOOM;
         iter = MAX_ITER;
         while (zx * zx + zy * zy < 4 && iter > 0) {
-          if (parar) break;
+          if (abort) break;
 
           tmp = zx * zx - zy * zy + cX;
           zy = 2.0 * zx * zy + cY;
@@ -98,7 +97,7 @@ public class parallelMandelbrot implements Runnable {
   }
 
   public static void next_gen_concurrent(int nt) {
-
+    abort = false;
     tamPool = nt;
 
     // barrera = new CyclicBarrier (tamPool);
