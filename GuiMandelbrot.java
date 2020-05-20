@@ -167,7 +167,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   private static void initializeInputTextFieldsAndLabels() {
     textfields_and_labels.put("Depth","100000");
     textfields_and_labels.put("Task number", "4");
-    textfields_and_labels.put("Zoom: ", "400");
+    textfields_and_labels.put("Zoom: ", "200");
   }
 
   private static void initializeButtonNames() {
@@ -313,7 +313,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   private static  int depth = 100000;
   private static int taskNumber = 4;
-  private static double zoom = 400;
+  private static double zoom = 200;
   private static int cells_number = 800;
   private static int width = 800;
   private static int height = 600;
