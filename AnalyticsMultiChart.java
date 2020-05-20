@@ -68,7 +68,7 @@ public class AnalyticsMultiChart {
 
     public void getSpeedUp(){
         speedUpData = new LinkedList[1];
-        speedUpData[0] = Guiref.getSpeedUp();
+        speedUpData[0] = Guiref.getSpeedUpData();
         double[]array = new double[speedUpData[0].size()];
         for (int i = 0; i < speedUpData[0].size(); i++){
             array[i] = speedUpData[0].get(i)+0.0;
