@@ -186,7 +186,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   }
 
   private static void initializeButtonNames() {
-    buttons_names = new String[] {"Initialize", "Start", "Stop"};
+    buttons_names = new String[] {"Initialize", "Start", "Stop", "Benchmark"};
   }
 
   private JSplitPane createGuiPanels() {
@@ -435,6 +435,67 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
       worker.cancel(true);
       worker.cancel(false);
       MainCanvas.task.stop();
+    }
+
+    if (e.getSource() == gui_buttons.get(buttons_names[3])) {
+      System.out.println("Benchmarking");
+      //      series = new XYSeries[1];
+      //
+      //      series[0] = new XYSeries("Ntareas: ");
+      //
+      //      dataset = new XYSeriesCollection();
+      //
+      //      dataset.addSeries(series[0]);
+      //
+      //      chart_poblacion = ChartFactory.createXYLineChart(
+      //              "SpeedUp", // Title"Ntareas", // x-axis Label
+      //              "SpeedUp", // y-axis Label
+      //              dataset, // Dataset
+      //              PlotOrientation.VERTICAL, // Plot Orientation
+      //              true, // Show Legend
+      //              true, // Use tooltips
+      //              false // Configure chart to generate URLs?
+      //      );
+      //
+      //      chart_panel_poblacion = new ChartPanel(chart_poblacion,true);
+      //
+      //
+      //      grafica.add(chart_panel_poblacion,true);
+      //
+      //      grafica.validate();
+      //      grafica.repaint();
+      //
+      //      worker =
+      //          new SwingWorker<Void, GuiMandelbrot>() {
+      //            @Override
+      //            protected Void doInBackground() {
+      //
+      //              for (int i = 0; i < 4; i++) {
+      //
+      //                cabm.bm.ini_bm(zoombm, iterbm);
+      //
+      //                long startTime = System.currentTimeMillis();
+      //
+      //                try {
+      //                  cabm.bm.next_gen_concurrent(i + 1);
+      //                } catch (Exception ex) {
+      //                  System.out.println("Aqui se ha quedado");
+      //                }
+      //                ;
+      //
+      //                long endTime = System.currentTimeMillis();
+      //
+      //                times[i] = endTime - startTime;
+      //
+      //                series[0].add(i + 1, times[0] / (float) times[i]);
+      //              }
+      //              return null;
+      //            }
+      //          };
+      //
+      //      worker.execute();
+      //
+      //    }
     }
   }
 
