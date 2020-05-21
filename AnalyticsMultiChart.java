@@ -45,11 +45,11 @@ public class AnalyticsMultiChart {
     }
 
 
-    public void create_series(){
-        speedUpChart.addSeries("Computation time",new double[] { 0 }, new double[] { 0 })
+    public void createSeries(){
+        computationTimeChart.addSeries("Computation Time",new double[] { 0 }, new double[] { 0 })
                     .setXYSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
 
-        computationTimeChart.addSeries("Speed up",new double[] { 0 }, new double[] { 0 })
+        speedUpChart.addSeries("Speed Up",new double[] { 0 }, new double[] { 0 })
                 .setXYSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
 
     }
@@ -72,7 +72,7 @@ public class AnalyticsMultiChart {
         double[]array = new double[speedUpData[0].size()];
         for (int i = 0; i < speedUpData[0].size(); i++){
             array[i] = speedUpData[0].get(i)+0.0;
-            speedUpChart.updateXYSeries("Speed up",null, array, null);
+            speedUpChart.updateXYSeries("Speed Up",null, array, null);
         }
     }
 
