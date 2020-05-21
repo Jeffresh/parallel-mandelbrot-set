@@ -439,64 +439,45 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     }
 
     if (e.getSource() == gui_buttons.get(buttons_names[3])) {
-      System.out.println("Benchmarking");
-      //      series = new XYSeries[1];
-      //
-      //      series[0] = new XYSeries("Ntareas: ");
-      //
-      //      dataset = new XYSeriesCollection();
-      //
-      //      dataset.addSeries(series[0]);
-      //
-      //      chart_poblacion = ChartFactory.createXYLineChart(
-      //              "SpeedUp", // Title"Ntareas", // x-axis Label
-      //              "SpeedUp", // y-axis Label
-      //              dataset, // Dataset
-      //              PlotOrientation.VERTICAL, // Plot Orientation
-      //              true, // Show Legend
-      //              true, // Use tooltips
-      //              false // Configure chart to generate URLs?
-      //      );
-      //
-      //      chart_panel_poblacion = new ChartPanel(chart_poblacion,true);
-      //
-      //
-      //      grafica.add(chart_panel_poblacion,true);
-      //
-      //      grafica.validate();
-      //      grafica.repaint();
-      //
-      //      worker =
-      //          new SwingWorker<Void, GuiMandelbrot>() {
-      //            @Override
-      //            protected Void doInBackground() {
-      //
-      //              for (int i = 0; i < 4; i++) {
-      //
-      //                cabm.bm.ini_bm(zoombm, iterbm);
-      //
-      //                long startTime = System.currentTimeMillis();
-      //
-      //                try {
-      //                  cabm.bm.next_gen_concurrent(i + 1);
-      //                } catch (Exception ex) {
-      //                  System.out.println("Aqui se ha quedado");
-      //                }
-      //                ;
-      //
-      //                long endTime = System.currentTimeMillis();
-      //
-      //                times[i] = endTime - startTime;
-      //
-      //                series[0].add(i + 1, times[0] / (float) times[i]);
-      //              }
-      //              return null;
-      //            }
-      //          };
-      //
-      //      worker.execute();
-      //
-      //    }
+      timeSpeedUpChart = new AnalyticsMultiChart("Computation Time / Speed Up", "task number", "Computation time");
+      timeSpeedUpChart.setRef(this);
+      timeSpeedUpChart.createSeries();
+      computationData = new LinkedList<Double>();
+      speedUpData = new LinkedList<Double>();
+      timeSpeedUpChart.show();
+
+
+      worker =
+          new SwingWorker<Void, GuiMandelbrot>() {
+            @Override
+            protected Void doInBackground() {
+
+
+
+              for (int i = 0; i < taskNumber; i++) {
+                MainCanvas.task.initializer((int) zoom, depth);
+
+                long startTime = System.currentTimeMillis();
+
+                try {
+                  MainCanvas.task.nextGenConcurrent(i + 1);
+                } catch (Exception ex) {
+                }
+
+                long endTime = System.currentTimeMillis();
+
+                computationData.add((double) endTime - startTime);
+
+                speedUpData.add( (double) computationData.getFirst() /(double) (endTime - startTime) );
+                timeSpeedUpChart.plot();
+              }
+
+              return null;
+            }
+          };
+
+      worker.execute();
+
     }
   }
 
