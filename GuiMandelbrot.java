@@ -180,7 +180,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
   private static void initializeInputTextFieldsAndLabels() {
     textfields_and_labels.put("Depth", "100000");
-    textfields_and_labels.put("Task number", "4");
+    textfields_and_labels.put("Tasks number", "4");
     textfields_and_labels.put("Zoom: ", "200");
   }
 
@@ -336,7 +336,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   }
 
   private static int depth = 100000;
-  private static int taskNumber = 4;
+  private static int tasksNumber = 4;
   private static double zoom = 200;
   private static int cells_number = 800;
   private static int width = 800;
@@ -367,7 +367,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
               try {
                 timeSpeedUpChart =
                     new AnalyticsMultiChart(
-                        "Computation time / Time SpeedUp", "task number", "Computation time");
+                        "Computation time / Time SpeedUp", "tasks number", "Computation time");
                 timeSpeedUpChart.show();
                 //            population_chart.setRef(MainCanvas.task);
                 //            population_chart.show();
@@ -405,7 +405,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
       System.out.println("Cells number: " + cells_number);
       System.out.println("Depth: " + depth);
-      System.out.println("Task number: " + taskNumber);
+      System.out.println("Tasks number: " + tasksNumber);
       System.out.println("Scale image: " + zoom);
 
       canvas_template.updateCanvas();
@@ -417,7 +417,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
             @Override
             protected Void doInBackground() {
               try {
-                MainCanvas.task.nextGenConcurrent(taskNumber);
+                MainCanvas.task.nextGenConcurrent(tasksNumber);
                 //            MainCanvas.task.plugPopulationChart(population_chart);
                 //            population_chart.setRef(MainCanvas.task);
                 JFrame dialog = new JFrame();
@@ -439,7 +439,7 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
     if (e.getSource() == gui_buttons.get(buttons_names[3])) {
       timeSpeedUpChart =
-          new AnalyticsMultiChart("Computation Time / Speed Up", "task number", "Computation time");
+          new AnalyticsMultiChart("Computation Time / Speed Up", "tasks number", "Computation time");
       timeSpeedUpChart.setRef(this);
       timeSpeedUpChart.createSeries();
       computationData = new LinkedList<Double>();
@@ -451,8 +451,9 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
             @Override
             protected Void doInBackground() {
 
-              for (int i = 0; i < taskNumber; i++) {
+              for (int i = 0; i < tasksNumber; i++) {
                 MainCanvas.task.initializer((int) zoom, depth);
+                MainCanvas.task.setBenchmarkMode(true);
 
                 long startTime = System.currentTimeMillis();
 
@@ -509,10 +510,10 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
         nump = input_variables_textfields[1].getText();
         nump_value = Double.parseDouble(nump);
         if (nump.equals("") || (nump_value < 1)) {
-          taskNumber = 4;
+          tasksNumber = 4;
           throw new Exception("Invalid Number");
         } else {
-          taskNumber = Integer.parseInt(nump);
+          tasksNumber = Integer.parseInt(nump);
         }
       }
     } catch (Exception ex) {
