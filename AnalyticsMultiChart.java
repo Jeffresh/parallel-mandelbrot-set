@@ -24,19 +24,19 @@ public class AnalyticsMultiChart {
 
     AnalyticsMultiChart(String chartTitle, String x_axis_name, String y_axis_name){
         this.chartTitle = chartTitle;
-        speedUpChart = new XYChartBuilder()
+        computationTimeChart = new XYChartBuilder()
                 .title(y_axis_name).xAxisTitle(x_axis_name)
                 .yAxisTitle(y_axis_name).width(600).height(300).build();
-        speedUpChart.getStyler().setLegendVisible(true);
-        speedUpChart.getStyler().setXAxisTicksVisible(true);
-        speedUpChart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
-
-        computationTimeChart = new XYChartBuilder()
-                .title("Speed Up").xAxisTitle(x_axis_name)
-                .yAxisTitle("Speed Up").width(600).height(300).build();
         computationTimeChart.getStyler().setLegendVisible(true);
         computationTimeChart.getStyler().setXAxisTicksVisible(true);
         computationTimeChart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
+
+        speedUpChart = new XYChartBuilder()
+                .title("Speed Up").xAxisTitle(x_axis_name)
+                .yAxisTitle("Speed Up").width(600).height(300).build();
+        speedUpChart.getStyler().setLegendVisible(true);
+        speedUpChart.getStyler().setXAxisTicksVisible(true);
+        speedUpChart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
 
     }
 
@@ -95,8 +95,8 @@ public class AnalyticsMultiChart {
         chartFrame = new JFrame("Charts");
         GridLayout layout = new GridLayout(2,1);
         chartFrame.setLayout(layout);
-        chartFrame.add(speedUpPanel);
         chartFrame.add(computationTimePanel);
+        chartFrame.add(speedUpPanel);
         chartFrame.setSize(600,600);
         chartFrame.setMaximumSize(new Dimension(100,600));
         chartFrame.setMaximumSize(new Dimension(100,600));
