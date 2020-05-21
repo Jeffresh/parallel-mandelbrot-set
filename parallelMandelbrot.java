@@ -21,6 +21,7 @@ public class parallelMandelbrot implements Runnable {
   private int in, fn;
   private static int totalTaskNumber;
   private static ThreadPoolExecutor miPool;
+  private static boolean benchmarkMode = false;
 
   public BufferedImage getData() {
     return image;
@@ -32,6 +33,10 @@ public class parallelMandelbrot implements Runnable {
 
   public void stop() {
     abort = true;
+  }
+
+  public void setBenchmarkMode(boolean benchmarkMode) {
+    parallelMandelbrot.benchmarkMode = benchmarkMode;
   }
 
   public void run() {
@@ -55,9 +60,11 @@ public class parallelMandelbrot implements Runnable {
           iter--;
         }
 
-        image.setRGB(x, y, iter | (iter << 8));
-        canvasRef.validate();
-        canvasRef.repaint();
+        if (!benchmarkMode) {
+          image.setRGB(x, y, iter | (iter << 8));
+          canvasRef.validate();
+          canvasRef.repaint();
+        }
       }
     }
   }
