@@ -463,14 +463,16 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
                 }
 
                 long endTime = System.currentTimeMillis();
-
-                computationData.add((double) endTime - startTime);
-
-                speedUpData.add(
-                    (double) computationData.getFirst() / (double) (endTime - startTime));
+                double computationTime = (double) endTime - startTime;
+                computationData.add(computationTime);
+                double speedUp = (double) computationData.getFirst() / (double) (computationTime);
+                speedUpData.add(speedUp);
                 timeSpeedUpChart.plot();
-              }
 
+                System.out.println("Tasks number: "+(i+1)+" => Computation Time: "+ computationTime/1000 + " secs");
+                System.out.println("Tasks number: "+(i+1)+" => Speed Up: "+ speedUp);
+              }
+              MainCanvas.task.setBenchmarkMode(false);
               return null;
             }
           };
