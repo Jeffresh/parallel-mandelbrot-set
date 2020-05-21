@@ -366,9 +366,10 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
             @Override
             protected Void doInBackground() {
               try {
-                            timeSpeedUpChart = new AnalyticsMultiChart("Computation time / Time SpeedUp",
-                 "task number", "Computation time");
-                            timeSpeedUpChart.show();
+                timeSpeedUpChart =
+                    new AnalyticsMultiChart(
+                        "Computation time / Time SpeedUp", "task number", "Computation time");
+                timeSpeedUpChart.show();
                 //            population_chart.setRef(MainCanvas.task);
                 //            population_chart.show();
 
