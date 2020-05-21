@@ -29,12 +29,11 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
   public static LinkedList<Double> computationData;
   public static LinkedList<Double> speedUpData;
 
-
-  public  LinkedList<Double> getComputationTimeData() {
+  public LinkedList<Double> getComputationTimeData() {
     return computationData;
   }
 
-  public  LinkedList<Double> getSpeedUpData() {
+  public LinkedList<Double> getSpeedUpData() {
     return speedUpData;
   }
 
@@ -439,20 +438,18 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
     }
 
     if (e.getSource() == gui_buttons.get(buttons_names[3])) {
-      timeSpeedUpChart = new AnalyticsMultiChart("Computation Time / Speed Up", "task number", "Computation time");
+      timeSpeedUpChart =
+          new AnalyticsMultiChart("Computation Time / Speed Up", "task number", "Computation time");
       timeSpeedUpChart.setRef(this);
       timeSpeedUpChart.createSeries();
       computationData = new LinkedList<Double>();
       speedUpData = new LinkedList<Double>();
       timeSpeedUpChart.show();
 
-
       worker =
           new SwingWorker<Void, GuiMandelbrot>() {
             @Override
             protected Void doInBackground() {
-
-
 
               for (int i = 0; i < taskNumber; i++) {
                 MainCanvas.task.initializer((int) zoom, depth);
@@ -468,7 +465,8 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
 
                 computationData.add((double) endTime - startTime);
 
-                speedUpData.add( (double) computationData.getFirst() /(double) (endTime - startTime) );
+                speedUpData.add(
+                    (double) computationData.getFirst() / (double) (endTime - startTime));
                 timeSpeedUpChart.plot();
               }
 
@@ -477,7 +475,6 @@ public class GuiMandelbrot extends Frame implements ActionListener, FocusListene
           };
 
       worker.execute();
-
     }
   }
 
