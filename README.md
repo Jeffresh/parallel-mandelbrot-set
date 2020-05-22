@@ -18,6 +18,6 @@ The GUI has three inputs:
 
 ### Benchmark Mode
 
-Pushing benchmark button you will start bencharmk for 1 to N tasks computing the computation time and Speed Up and ploting the results on real time:
+Pushing benchmark button you will start bencharmk for 1 to N tasks computing the computation time and Speed Up and plotting the results on real time:
 
 ![Gui](assets/charts_2.jpg "charts_example")
